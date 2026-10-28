@@ -1,0 +1,5 @@
+.private/
+*.mp4
+*.wav
+.env*
+__pycache__/
