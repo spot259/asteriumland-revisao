@@ -27,7 +27,7 @@ async function keepSession(force=false,rejectedToken=null){
 async function request(path,options={}){
  const usedToken=session?.access_token;
  try{return await rawRequest(path,options);}catch(error){
-  if(error.status!==401||path.startsWith('/auth/')||!session?.refresh_token)throw error;
+  if(error.status!==401||path.startsWith('/auth/v1/token')||path.startsWith('/auth/v1/verify')||path.startsWith('/auth/v1/logout')||!session?.refresh_token)throw error;
   await keepSession(true,usedToken);return rawRequest(path,options);
  }
 }
